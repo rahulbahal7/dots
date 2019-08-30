@@ -60,7 +60,8 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-
+;; Add cargo for Rust
+(add-hook 'rust-mode-hook 'cargo-minor-mode)
 
 ;; ido mode for buffer management
 (progn
@@ -110,7 +111,7 @@
  '(hl-sexp-background-color "#121212")
  '(package-selected-packages
    (quote
-    (py-autopep8 flycheck elpy material-theme jedi hlinum smooth-scrolling)))
+    (cargo rust-mode py-autopep8 flycheck elpy material-theme jedi hlinum smooth-scrolling)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
