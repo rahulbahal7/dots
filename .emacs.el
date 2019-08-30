@@ -3,6 +3,9 @@
 ;; Enable line mode
 (global-linum-mode t)
 
+;; Enable column number mode
+(column-number-mode t)
+
 (global-set-key [mouse-4] 'scroll-down-line)
 (global-set-key [mouse-5] 'scroll-up-line)
 
