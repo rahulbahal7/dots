@@ -51,17 +51,27 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
 
-;; Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
 ;; pep8 compliace
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; Add cargo for Rust
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
+
+;; Rust Setup
+(setq racer-cmd "~/.cargo/bin/racer") ;; Rustup binaries PATH
+;; Rust source PATH
+(setq racer-rust-src-path "/Users/bahalr/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src") 
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+(require 'flycheck)
+(require 'flycheck-rust)
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
 
 ;; ido mode for buffer management
 (progn
@@ -84,7 +94,6 @@
   )
 
 
-
 ;; big minibuffer height, for ido to show choices vertically
 (setq max-mini-window-height 0.5)
 ;; load emacs 24's package system. Add MELPA repository.
@@ -95,6 +104,7 @@
    ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
    '("melpa" . "http://melpa.milkbox.net/packages/")
    t))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -111,7 +121,7 @@
  '(hl-sexp-background-color "#121212")
  '(package-selected-packages
    (quote
-    (cargo rust-mode py-autopep8 flycheck elpy material-theme jedi hlinum smooth-scrolling)))
+    (list-packages-ext racer cargo rust-mode py-autopep8 elpy material-theme jedi hlinum smooth-scrolling)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -136,13 +146,11 @@
  '(vc-annotate-very-old-color nil))
 
 
-
 ;; Navigation in emacs windows
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
-
 
 
 ;; Install Jedi for Python Autocomplete
@@ -151,3 +159,5 @@
 (setq jedi:complete-on-dot t)
 (autoload 'jedi:setup "jedi" nil t)
 (jedi:install-server)
+
+(global-flycheck-mode)
