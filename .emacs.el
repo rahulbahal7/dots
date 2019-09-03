@@ -152,7 +152,6 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 
-
 ;; Install Jedi for Python Autocomplete
 ;; Standard Jedi.el setting
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -161,3 +160,4 @@
 (jedi:install-server)
 
 (global-flycheck-mode)
+
