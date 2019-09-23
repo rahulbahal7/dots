@@ -46,6 +46,9 @@
 ;; load theme here
 (load-theme 'material t)
 
+;; Anaconda Mode
+(add-hook 'python-mode-hook 'anaconda-mode)
+
 ;; elpy mode - Python
 (elpy-enable)
 (when (executable-find "ipython")
@@ -121,7 +124,7 @@
  '(hl-sexp-background-color "#121212")
  '(package-selected-packages
    (quote
-    (list-packages-ext racer cargo rust-mode py-autopep8 elpy material-theme jedi hlinum smooth-scrolling)))
+    (anaconda-mode list-packages-ext racer cargo rust-mode py-autopep8 elpy material-theme jedi hlinum smooth-scrolling)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -145,12 +148,14 @@
      (360 . "#8bc34a"))))
  '(vc-annotate-very-old-color nil))
 
-
 ;; Navigation in emacs windows
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
+
+;; Shortcut for rgrep
+(global-set-key (kbd "C-c i") 'rgrep)
 
 ;; Install Jedi for Python Autocomplete
 ;; Standard Jedi.el setting
@@ -160,4 +165,3 @@
 (jedi:install-server)
 
 (global-flycheck-mode)
-
