@@ -11,3 +11,13 @@ syntax on
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
+
+" search as chars are entered
+set incsearch
+
+" Speed up scrolling in Vim
+set ttyfast
+
+" Highlight matching search patterns
+set hlsearch
+
