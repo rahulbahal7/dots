@@ -1,12 +1,18 @@
+# save history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/sbin
 
 # Export cargo
-source $HOME/.cargo/env
+#source $HOME/.cargo/env
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/bahalr/.oh-my-zsh"
+#export ZSH="/Users/bahalr/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -76,7 +82,7 @@ plugins=(
     git
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -107,7 +113,11 @@ source $ZSH/oh-my-zsh.sh
 # Execute emacs with e
 alias e="emacs -nw"
 
-# cd and ls
+# switch to frequently used dirs
+alias farshot="cd /usr/local/cape/farshot"
+alias dev="source /usr/local/cape/farshot/venv/bin/activate"
+
+# cd and ls 
 function chpwd() {
     emulate -L zsh
     ls -a
