@@ -1,3 +1,4 @@
+
 " set line numbers
 set nu
 
@@ -21,3 +22,5 @@ set ttyfast
 " Highlight matching search patterns
 set hlsearch
 
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
