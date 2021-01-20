@@ -10,3 +10,7 @@
 ;; which function
 (which-func-mode t)
 
+;; Show matching Parenthesiss
+(show-paren-mode 1)
+
+(global-set-key (kbd "C-c i") 'search-forward)
