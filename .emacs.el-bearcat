@@ -1,0 +1,16 @@
+;; Fix backspace issue
+(normal-erase-is-backspace-mode 1)
+
+;; Enable line mode
+(global-linum-mode t)
+
+;; Enable column number mode
+(column-number-mode t)
+
+;; which function
+(which-func-mode t)
+
+;; Show matching Parenthesiss
+(show-paren-mode 1)
+
+(global-set-key (kbd "M-s") 'isearch-forward)
